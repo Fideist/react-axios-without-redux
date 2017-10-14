@@ -5,6 +5,7 @@ import Header from './Header/Header';
 import List from './List/List';
 import Workspace from './Workspace/Workspace';
 
+import { getCustomerList } from '../customer'
 
 class App extends Component {
   constructor() {
@@ -16,6 +17,12 @@ class App extends Component {
       currentCustomer: null
     }
 
+  }
+
+  componentDidMount() {
+    getCustomerList().then(list => {
+      this.setState({ customerList: list });
+    })
   }
 
   render() {
